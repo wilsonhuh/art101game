@@ -5,7 +5,7 @@ let cnv;
 let points = 0;
 let w = 600;
 let h = 600;
-
+//test
 
 function setup() {
  cnv = createCanvas(w, h);
