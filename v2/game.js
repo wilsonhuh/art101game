@@ -88,22 +88,31 @@ function titleMouseClicked(){
 
 function level1(){
   background(50, 150, 200);
- // text('Click for Points', w/2, h*4/5);
+
   
   player.display();
   player.move();
   
   coin.display();
   coin.move();
+  
+  //check  for collision, if there is a collision increase points by 1
+  if (dist(player.x, player.y, coin.x, coin.y) <= (player.r + coin.r) / 2){
+	 points++;
+	 console.log(points);
+  }  
+  
+text('Points:' + points, w/2, h*4/5); 
+ 
 }
 
 function level1MouseClicked(){
-  points++;
-  console.log('points = ' + points);
+//  points++;
+//  console.log('points = ' + points);
 
-  if (points >= 10){
-    state = "win";
-  }
+//  if (points >= 10){
+//    state = "win";
+//  }
 }
 
 function Win(){
