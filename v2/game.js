@@ -7,6 +7,11 @@ let w = 600;
 let h = 600;
 let player;
 let coin = [];
+let playerImg;
+
+function preload(){
+	playerImg = loadImage('assets/tiktaalik.png');
+}	
 
 function setup() {
  cnv = createCanvas(w, h);
