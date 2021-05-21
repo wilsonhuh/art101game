@@ -6,7 +6,7 @@ let points = 0;
 let w = 600;
 let h = 600;
 let player;
-let coin;
+let coin = [];
 
 function setup() {
  cnv = createCanvas(w, h);
@@ -15,7 +15,8 @@ textFont('Helvetica');
 
 player = new Player;
 
-coin = new Coin();
+//coin [0] = new Coin();
+//coin.push(new Coin());
 
 }
 
@@ -89,17 +90,27 @@ function titleMouseClicked(){
 function level1(){
   background(50, 150, 200);
 
+  if (random(1)<= 0.01){
+	  coin.push(new Coin());
+  }  
   
   player.display();
   player.move();
   
-  coin.display();
-  coin.move();
   
-  //check  for collision, if there is a collision increase points by 1
-  if (dist(player.x, player.y, coin.x, coin.y) <= (player.r + coin.r) / 2){
+  for (let i = 0; i < coin.length; i++){
+	  coin[i].display();
+      coin[i].move();  
+  }
+  
+  //check  for collision, if there is a collision increase points by 1 AND splice that coin out of array
+  
+  for (let i = coin.length - 1; i >= 0; i--) {
+  if (dist(player.x, player.y, coin[i].x, coin[i].y) <= (player.r + coin[i].r) / 2){
 	 points++;
 	 console.log(points);
+	 coin.splice(i,1);
+    }  
   }  
   
 text('Points:' + points, w/2, h*4/5); 
