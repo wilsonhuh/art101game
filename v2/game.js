@@ -8,9 +8,11 @@ let h = 600;
 let player;
 let coin = [];
 let playerImg;
+let coinImg;
 
 function preload(){
 	playerImg = loadImage('assets/tiktaalik.png');
+    coinImg = loadImage('assets/fish1.png');
 }	
 
 function setup() {
@@ -115,7 +117,9 @@ function level1(){
 	 points++;
 	 console.log(points);
 	 coin.splice(i,1);
-    }  
+    } else if (coin[i].y > h){
+     coin.splice(i,1);
+    }
   }  
   
 text('Points:' + points, w/2, h*4/5); 
