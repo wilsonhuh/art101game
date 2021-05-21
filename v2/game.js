@@ -46,14 +46,29 @@ function draw() {
   //  level1();
   //   cnv.mouseClicked(level1MouseClicked);
   //} else {
-    
-  //}
-  
+  //}  
 }
 
-function mousePressed(){
-  state = 'level 1';
-}
+function keyPressed(){
+	if (keyCode == LEFT_ARROW){
+		player.direction = 'left'
+	} else if(keyCode == RIGHT_ARROW) {
+	    player.direction = 'right'
+	} else if(keyCode == UP_ARROW) {
+	    player.direction = 'up'
+	} else if(keyCode == DOWN_ARROW) {
+	    player.direction = 'down'
+	} else if (key = ' '){
+	 player.direction = 'still';
+}		
+	
+	
+	
+}	
+
+//function mousePressed(){
+//  state = 'level 1';
+//}
 
 function title(){
   background(150,150,250);
@@ -76,6 +91,7 @@ function level1(){
  // text('Click for Points', w/2, h*4/5);
   
   player.display();
+  player.move();
   
   coin.display();
   coin.move();
